@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ballot Marking System Maintenance</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/1290b2bcc8.js" crossorigin="anonymous"></script>
+    <script src="/jQuery/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+    <h1>
+        Admin
+    </h1>
+
+    {{#if user.admin}}
+    <div class="top-info">
+        <p class="tech-name">{{user.name}} -
+            {{#if user.assigned_team}}<span style="color:Dark{{user.assigned_team}};">{{user.assigned_team}} Team</span>
+            {{else}} No team assigned {{/if}}</p>
+        <form class="admin-link" action="/admin/upload-schedule" method="GET">
+            <button type="submit" class="btn btn-outline-dark town-select-btn">Upload New Schedule CSV</button>
+        </form>
+        <form class="admin-link" action="/admin/register" method="GET">
+            <button type="submit" class="btn btn-outline-dark town-select-btn">Add/View Users</button>
+        </form>
+    </div>
+
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Town</th>
+                <th>Serviced</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Reports</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each towns}}
+            <tr>
+                <td style="background-color: Dark{{this.assigned_team}};">{{this.assigned_team}}</td>
+                <td>{{this.name}}</td>
+                <td><span {{#ifEquals this.num_serviced this.num_machines}}style="color:green;"{{/ifEquals}}>
+                    {{this.num_serviced}} of {{this.num_machines}}</span>
+                {{#if this.problems}}<br><span style="color:red;">{{this.problems.length}} Issue(s){{/if}}</span></td>
+                <td>{{getDate this.scheduled_time}}</td>
+                <td>{{this.time_string}}</td>
+                <td><form class="admin-link" action="/town-report/{{this._id}}"><button type="submit" class="btn btn-outline-dark town-select-btn">Town</button></form>
+                <form class="admin-link" action="/follow-up/{{this._id}}"><button type="submit" class="btn btn-outline-dark town-select-btn">Shipping</button></form></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <div class="top-info">
+        <p>You are not an admin. Please login as an admin to access this page!</p>
+    </div>
+    {{/if}}
+    <!-- NAV BAR -->
+    <nav>
+        <ul>
+            <li><a href="/" class="dashboard-break">Dashboard</a></li>
+            <li><a href="/town-report">Town Reports</a></li>
+            <li><a href="/admin" class="admin-nav" >Admin</a></li>
+            <li><a href="/follow-up">Shipping Follow Up</a></li>
+            <li><a href="/user">User Profile</a></li>
+        </ul>
+    </nav>
+</body>

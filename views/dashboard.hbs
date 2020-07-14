@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ballot Marking System Maintenance</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/1290b2bcc8.js" crossorigin="anonymous"></script>
+    <script src="/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="/jQuery/scripts/date-edit.js"></script>
+    <script src="/jQuery/scripts/dashboard-expand.js"></script>
+</head>
+
+<body>
+    <h1>
+        Dashboard
+    </h1>
+
+    <div class="top-info">
+        <p class="tech-name">{{user.name}} -
+            {{#if user.assigned_team}}<span style="color:Dark{{user.assigned_team}};">{{user.assigned_team}} Team</span>
+            {{else}} No team assigned {{/if}}</p>
+        <p id="date-text" class="date"><i class="fas fa-edit" id="date-edit"></i>
+            {{day_of_week}}, {{month}} {{day}}, {{year}}</p>
+        <form id="date-form" action='/dashboard/date' method='POST'>
+            <input id="date-input" type="date" name="new_date" value={{dateFormString}}>
+            <button type="submit">Submit</button>
+        </form>
+        {{#unless towns}}
+        <p><b>No towns scheduled for {{day_of_week}}, {{month}} {{day}}, {{year}}</b></p>
+        {{/unless}}
+    </div>
+
+    {{#each towns}}
+    <div class="dashboard-towns-a">
+        <div class="dashboard-info">
+            <p><b>{{this.name}}</b> ({{this.num_machines}} machines)
+                <i class="dashboard-arrow fas fa-chevron-down"></i></p>
+            <p>{{this.time_string}}</p>
+            <p>{{this.address}}</p>
+            <a class="town-report-link" href="/town-report/{{this._id}}">Town Report</a>
+        </div>
+        <div class="dashboard-info" style="display: none;">
+            <p><b>{{this.name}}</b> ({{this.num_machines}} machines)
+                <i class="dashboard-arrow fas fa-chevron-up"></i></p>
+            <p>Time: {{this.time_string}}</p>
+            <p>Address: {{this.address}}</p>
+            <p>Parking Notes: {{this.parking_notes}}</p>
+            <p>Building Notes: {{this.building_notes}}</p>
+            <p>Contact Notes: {{this.contacts}}</p>
+            <p>Phone Numbers: {{this.phone_numbers}}</p>
+            <a class="town-report-link" href="/town-report/{{this._id}}">Town Report</a>
+        </div>
+    </div>
+    {{!-- </a> --}}
+    {{/each}}
+
+    <!-- NAV BAR -->
+    <nav>
+        <ul>
+            <li><a href="/" class="dashboard-nav dashboard-break">Dashboard</a></li>
+            <li><a href="/town-report">Town Reports</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/follow-up">Shipping Follow Up</a></li>
+            <li><a href="/user">User Profile</a></li>
+        </ul>
+    </nav>
+</body>

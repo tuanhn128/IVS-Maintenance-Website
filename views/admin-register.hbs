@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ballot Marking System Maintenance</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/jQuery/selectize/selectize.bootstrap3.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/1290b2bcc8.js" crossorigin="anonymous"></script>
+    <script src="/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="/jQuery/selectize/selectize.min.js"></script>
+    <script src="/jQuery/scripts/register-form.js"></script>
+</head>
+
+<body>
+    <h1>
+        Admin
+    </h1>
+    <div class="top-info">
+        <p class="tech-name">{{user.name}} -
+            {{#if user.assigned_team}}<span style="color:Dark{{user.assigned_team}};">{{user.assigned_team}} Team</span>
+            {{else}} No team assigned {{/if}}</p>
+    </div>
+
+    {{#if user.admin}}
+    <table class="admin-table">
+        <thead>
+            <tr>
+                <th>Team</th>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Admin</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each all_users}}
+            <tr>
+                <td class="assigned-team">{{this.assigned_team}}</td>
+                <td>{{this.name}}</td>
+                <td>{{this.user_name}}</td>
+                <td>{{#if this.admin}}<i class="fas fa-check"></i>{{/if}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <div class="user-form top-info">
+        <form action="/admin/register" method="POST" style="display:none;">
+            <br>
+            <label for="user_name" class="ml-auto mb-2">Username: </label>
+            <input type="text" name="user_name" class="mx-auto" required><br>
+            <label for="password" class="ml-auto mb-2">Password: </label>
+            <input type="text" name="password" class="mx-auto" required><br>
+            <label for="name" class="ml-auto mb-2">Name: </label>
+            <input type="text" name="name" class="mx-auto" required><br>
+            <label for="admin" class="ml-auto mb-2">Admin: </label>
+            <input type="checkbox" name="admin" class="mx-auto"><br>
+            <label for="admin" class="ml-auto mb-2">Team: </label>
+            <select id="select-team" class="mr-sm-auto" name="assigned_team">
+            </select>
+            <button type="button" id="cancel-user-btn" class="btn btn-outline-dark town-select-btn">Cancel</button>
+            <button type="submit" id="save-user-btn" class="btn btn-outline-dark town-select-btn">Save User</button>
+        </form>
+        <button type="button" id="add-user-btn" class="btn btn-outline-dark town-select-btn">Add User</button>
+    </div>
+    {{else}}
+    <div class="top-info">
+        <p>You are not an admin. Please login as an admin to access this page!</p>
+    </div>
+    {{/if}}
+    <!-- NAV BAR -->
+    <nav>
+        <ul>
+            <li><a href="/" class="dashboard-break">Dashboard</a></li>
+            <li><a href="/town-report">Town Reports</a></li>
+            <li><a href="/admin" class="admin-nav">Admin</a></li>
+            <li><a href="/follow-up">Shipping Follow Up</a></li>
+            <li><a href="/user">User Profile</a></li>
+        </ul>
+    </nav>
+</body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ballot Marking System Maintenance</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/jQuery/selectize/selectize.bootstrap3.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/1290b2bcc8.js" crossorigin="anonymous"></script>
+    <script src="/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="/jQuery/selectize/selectize.min.js"></script>
+    <script src="/jQuery/scripts/town-select.js"></script>
+</head>
+
+<body>
+    <h1>
+        Shipping Follow Up
+    </h1>
+
+    <div class="top-info">
+        <p class="tech-name">{{user.name}} -
+            {{#if user.assigned_team}}<span style="color:Dark{{user.assigned_team}};">{{user.assigned_team}} Team</span>
+            {{else}} No team assigned {{/if}}</p>
+        <form action='/follow-up/home' method='POST'>
+            <div class="form-inline justify-content-center">
+                <label for="select-town" class="ml-sm-auto mr-sm-0 mb-2">Town Name:</label>
+                <select id="select-town" name="selected_town_id" class="mr-sm-auto">
+                    {{#each towns}}
+                    <option value={{this._id}}>{{this.name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-outline-dark town-select-btn">Select</button>
+        </form>
+    </div>
+
+    <!-- NAV BAR -->
+    <nav>
+        <ul>
+            <li><a href="/" class="dashboard-break">Dashboard</a></li>
+            <li><a href="/town-report">Town Reports</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/follow-up" class="follow-up-nav">Shipping Follow Up</a></li>
+            <li><a href="/user">User Profile</a></li>
+        </ul>
+    </nav>
+
+</body>

@@ -1,0 +1,381 @@
+/* GENERAL */
+
+body {
+    background-image: linear-gradient(rgba(50,130,184,1), rgba(50,130,184,0));
+    height: 100%;
+    margin: 0;
+    margin-bottom: 40px;        /* approx. height of footer nav */
+    background-repeat: no-repeat;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 30px 0;
+}
+
+.top-info {
+    text-align: center;
+}
+
+.top-info a {
+    color: blue;
+    text-decoration: underline;
+}
+
+.edit-button {
+    font-size: .6em;
+    border: none;
+    background-color: transparent;
+    padding: none;
+    margin: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* SIGN IN */
+
+
+/* NAV BAR */
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3282B8;
+    font-weight: 300;
+    margin: 0 auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+li {
+    float: left;
+    width: 20%;
+}
+  
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 10px 5px;
+    text-decoration: none;
+    border-right: 1px solid black;
+}
+
+li a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+/* DASHBOARD */
+
+.dashboard-nav {
+    color: white !important;
+}
+
+.top-info p {
+    margin-bottom: 10px;
+}
+
+/* #dashboard-datepicker {
+    margin-bottom: 20px;
+    max-width: 200px;
+} */
+
+#date-edit {
+    margin-right: 2px;
+}
+
+#date-edit:hover {
+    cursor: pointer;
+}
+
+#date-form {
+    margin-bottom: 10px;
+    display: none;
+}
+
+.dashboard-towns-a:hover {
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dashboard-info {
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.dashboard-info p {
+    padding-left: 5px;
+    margin-bottom: 2px;
+}
+
+.dashboard-info a {
+    padding-left: 5px;
+    margin-bottom: 2px;
+    color: blue;
+    text-decoration: underline;
+}
+
+.dashboard-info:hover {
+    background-color: rgba(46, 49, 49, .6);
+}
+
+.contact-info {
+    padding-left: 10px;
+}
+
+.dashboard-arrow {
+    /* position: absolute;
+    left: 73%; */
+    float: right;
+    margin-left: 10px;
+}
+
+/* DASHBOARD TOWN DONE */
+/* .fa-check {
+    color: green;
+    position: absolute;
+    left: 95%;
+} */
+
+/* DASHBOARD SHIPPING DONE */
+/* .fa-truck {
+    color: green;
+    position: absolute;
+    left: 95%;
+} */
+
+/* TOWN-REPORT */
+
+.town-report-nav {
+    color: white !important;
+}
+
+.town-report-hidden-input {
+    display: none
+}
+
+#town-report-name {
+    font-size: 1.5em;
+}
+
+.selectize-input, .selectize-dropdown {
+    min-width: 175px !important;
+    max-width: 300px;
+}
+
+#towns {
+    max-width: 150px;
+}
+
+.town-select-btn {
+    margin: 10px auto;
+}
+
+.lading-link {
+    color: #212529;
+    text-decoration: underline;
+}
+
+.lading-img {
+    margin-bottom: 10px;
+}
+
+.town-report-form {
+    text-align: center;
+}
+
+.town-report-headings {
+    font-weight: bold;
+    margin-top: 25px;
+    margin-bottom: 5px;
+}
+
+.systems-serviced {
+    display: inline;
+}
+
+.town-report-notes-headings {
+    font-weight: bold;
+    margin-top: 25px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#notes {
+    min-width: 200px;
+}
+
+.town-report-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.town-report-table thead {
+    text-align: center;
+}
+
+.town-report-table tbody {
+    font-weight: 300;
+}
+
+.town-report-table td {
+    padding: 2px 20px;
+}
+
+input[type="number"] {
+    width: 40px;
+}
+
+.town-report-btn, .confirm-save {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* ADMIN */
+
+.admin-nav {
+    color: white !important;
+}
+
+.admin-filter {
+    text-align: center;
+    margin: 10px;
+}
+
+.admin-link {
+    display: inline-block;
+}
+
+.admin-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.admin-table { 
+    border: none; 
+    border-collapse: collapse; 
+}
+
+.admin-table tr {
+    text-align: center;
+}
+
+.admin-table th {
+    border-left: 1px solid gray; 
+    padding: 5px 20px;
+}
+
+.admin-table td {
+    border-left: 1px solid gray;
+    font-weight: 300;
+    padding: 2px 20px;
+}
+
+.admin-table th:first-child,
+.admin-table td:first-child {
+    border-left: none;
+}
+
+.admin-town-done {
+    background-color: #07b625;
+}
+
+.active {
+    cursor: pointer;
+    -webkit-text-stroke: 1px black;     /* because font-weight:bold doesn't work for tr, only td */
+}
+
+/* FOLLOW UP */
+
+.follow-up-nav {
+    color: white !important;
+}
+
+.follow-up-info {
+    font-weight: 300;
+}
+
+#follow-up-name {
+    font-size: 1.5em;
+}
+
+.follow-up-main {
+    text-align: center;
+}
+
+.follow-up-table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+
+.follow-up-table td {
+    padding: 0 10px;
+}
+
+/* USER PROFILE */
+
+.user-profile-nav {
+    color: white !important;
+}
+
+.username {
+    font-weight: 300;
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 575px) {      /* Bootstrap's smallest media query */
+
+    /* body {
+        font-size: .95em;
+    } */
+
+    h1 {
+        font-size: 2em;
+    }
+
+    /* NAV BAR */
+    
+    li a {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 3px;
+    }
+
+    .dashboard-break {
+        /* word-break: break-word;  */
+        letter-spacing: -1.1px;
+    }
+
+    /* DASHBOARD FONT AWESOME ICONS */
+    /* .fa-check,
+    .fa-truck {
+        font-size: 2em !important;
+        left: 85%;
+    } */
+
+    /* ADMIN */
+
+    .admin-table th,
+    .admin-table td { 
+        padding: 3px 8px;   /* 2px */
+    }
+}
+
+@media screen and (min-width: 768px) {      /* Bootstrap's medium media query */
+    .dashboard-towns-a {
+        display: block;
+        width: 50%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ballot Marking System Maintenance</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/jQuery/selectize/selectize.bootstrap3.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/1290b2bcc8.js" crossorigin="anonymous"></script>
+    <script src="/jQuery/jquery-3.5.1.min.js"></script>
+    <script src="/jQuery/scripts/follow-up-edit.js"></script>
+</head>
+
+<body>
+    <h1>
+        Shipping Follow Up
+    </h1>
+
+    <div class="top-info">
+        <p id="follow-up-name"><b>{{town.name}}</b></p>
+    </div>
+
+    <div class="follow-up-main">
+        <form action='/follow-up/update' method='POST'>
+            <input type="text" name="_id" value="{{town._id}}" style="display:none;" readonly>
+            <label for="ship_status" class="ml-auto mb-2">Shipping Status: </label>
+            <select class="shipping-input" style="display:none;" name="ship_status" required>
+                <option value="Not Shipped">Not Shipped</option>
+                <option value="Shipped"{{#ifEquals town.ship_status "Shipped"}}selected{{/ifEquals}}>Shipped</option>
+                <option value="Confirmed"{{#ifEquals town.ship_status "Confirmed"}}selected{{/ifEquals}}>Confirmed</option>
+            </select>
+            <p class="shipping-input"><span class="follow-up-info">{{town.ship_status}}</span></p>
+            <br class="shipping-input" style="display:none;">
+            <label for="date-input" class="ml-auto mb-2">Shipping Date: </label>
+            <input id="date-input" class="shipping-input" style="display:none;" type="date" name="ship_date" value="{{town.ship_date}}" required>
+            <p class="shipping-input"><span class="follow-up-info">{{town.ship_date}}</span></p>
+            <br class="shipping-input" style="display:none;">
+            <label for="ship_tech" class="ml-auto mb-2">Shipping Technician: </label>
+            <input type="text" name="ship_tech" class="shipping-input mx-auto" style="display:none;" value="{{town.ship_tech}}">
+            <p class="shipping-input"><span class="follow-up-info">{{town.ship_tech}}</span></p>
+            <br class="shipping-input" style="display:none;">
+            <label for="ship_notes" class="ml-auto mb-2">Shipping Notes: </label>
+            <br class="shipping-input" style="display:none;">
+            <textarea name="ship_notes" class="shipping-input col-3 mx-auto" style="display:none;">{{town.ship_notes}}</textarea>
+            <p class="shipping-input"><span class="follow-up-info">{{town.ship_notes}}</span></p>
+            <br class="shipping-input" style="display:none;">
+            <p>Contact Notes: <span class="follow-up-info">{{town.contacts}}</span></p>
+            <p>Phone Numbers: <span class="follow-up-info">{{town.phone_numbers}}</span></p>
+            <p>Address: <span class="follow-up-info">{{town.address}}</span></p>
+            <p>Items to Ship: <span id="no-items" style="display:none;">None</span></p>
+            <table class="follow-up-table">
+                <tr>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                </tr>
+                {{#each town.problems}}
+                {{#if this.will_ship}}
+                <tr class="shipping-item-row">
+                    <td>{{this.item_name}}</td>
+                    <td>{{this.will_ship}}</td>
+                </tr>
+                {{/if}}
+                {{/each}}
+            </table>
+            <button type="submit" id="save-follow-up" class="shipping-input btn btn-outline-dark town-select-btn" style="display:none;">Update Shipping Info</button>
+            <button type="button" id="edit-follow-up" class="shipping-input btn btn-outline-dark town-select-btn">Edit Shipping Info</button>
+        </form>
+    </div>
+
+    <!-- NAV BAR -->
+    <nav>
+        <ul>
+            <li><a href="/" class="dashboard-break">Dashboard</a></li>
+            <li><a href="/town-report">Town Reports</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/follow-up" class="follow-up-nav">Shipping Follow Up</a></li>
+            <li><a href="/user">User Profile</a></li>
+        </ul>
+    </nav>
+
+</body>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Ballot Marking System Maintenance</title>
+    <link rel="stylesheet" href="/Bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://kit.fontawesome.com/1290b2bcc8.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>
+        User Profile
+    </h1>
+
+    <div class="top-info">
+        <p>Username: <span class="username">{{user.user_name}}</span></p>
+        <p><a href="/user/change-password">Change Password</a></p>
+        {{!-- <form>
+            <p>Password: ********* <button class="edit-button"><i class="fa fa-edit fa-2x"></i></button></p>
+        </form> --}}
+        <form action="/logout">
+            <button type="submit" class="btn btn-outline-dark">Sign Out</button>
+        </form>
+    </div>
+
+    <!-- NAV BAR -->
+    <nav>
+        <ul>
+            <li><a href="/" class="dashboard-break">Dashboard</a></li>
+            <li><a href="/town-report">Town Reports</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/follow-up">Shipping Follow Up</a></li>
+            <li><a href="/user" class="user-profile-nav">User Profile</a></li>
+        </ul>
+    </nav>
+</body>
